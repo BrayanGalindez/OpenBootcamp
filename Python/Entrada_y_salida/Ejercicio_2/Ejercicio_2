@@ -1,0 +1,30 @@
+import pickle
+
+class Vehiculo:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+
+# Función para guardar el objeto en un archivo
+def guardar_vehiculo(objeto_vehiculo, archivo):
+    with open(archivo, "wb") as f:
+        pickle.dump(objeto_vehiculo, f)
+
+# Función para cargar el objeto desde un archivo
+def cargar_vehiculo(archivo):
+    with open(archivo, "rb") as f:
+        objeto_cargado = pickle.load(f)
+    return objeto_cargado
+
+# Crear un objeto de la clase Vehiculo
+vehiculo1 = Vehiculo("Toyota", "Corolla")
+
+# Guardar el objeto en un archivo llamado "vehiculo.dat"
+guardar_vehiculo(vehiculo1, "vehiculo.txt")
+
+# Cargar el objeto desde el archivo "vehiculo.dat"
+vehiculo_cargado = cargar_vehiculo("vehiculo.txt")
+
+# Imprimir los atributos del objeto cargado
+print("Marca:", vehiculo_cargado.marca)
+print("Modelo:", vehiculo_cargado.modelo)
